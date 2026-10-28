@@ -1,31 +1,102 @@
-# insurance-sales-analysis-powerbi
-Power BI sales analysis project with ETL process, star schema data model and interactive dashboards.
-# Insurance Sales Analysis – Power BI Project
+# Insurance Sales Analysis — Power BI Project
 
-This project analyzes sales activity of a fictional insurance company "Happy Insurance".
+End-to-end BI project analyzing sales activity of a fictional insurance company **"Happy Insurance"** — from ETL in Power Query to a star schema data model, DAX measures, and interactive Power BI dashboards.
 
-## Tools Used
-- Power BI
-- Power Query
-- Excel
-- Data Modeling
+Team project — Technion Big Data Analyst program (TCBDA-28) · **Valeria Barabanova** · **Lihi Berg**
 
-## Project Features
-- ETL process implemented in Power Query
-- Star schema data model
-- Sales revenue analysis
-- Customer segmentation
-- Geographic revenue analysis
+---
+
+## Business Questions
+- Which products, divisions and segments drive revenue?
+- How does revenue develop over time, and are we meeting targets?
+- Who are our customers (end-users vs. distributors) and how much does each segment spend?
+- Which countries and regions generate the most revenue?
+
+---
+
+## Data Sources
+| Source | Content |
+|---|---|
+| SQL Server | Transactional data — orders, order lines, products, customers |
+| CSV file | Geographic and regional data |
+
+The two sources are joined via a shared geographic key (`GeoKey`). The scope covers tens of thousands of records over three years of activity (2011–2013).
+
+*The source SQL database and CSV are not included in this repository; the data is embedded in the `.pbix` file.*
+
+---
+
+## ETL Process (Power Query)
+- **Data cleansing** — handling null values and outliers
+- **Standardization** — data type conversions, consistent formats across sources
+- **Merging queries** — combining SQL and CSV sources into dimension tables
+- **Date dimension** — generated with parameters (`p_StartYear`, `p_EndYear`) and `List.Dates`
+- **Custom function** `fn_QuarterKey` — builds a numeric quarter key (yyyyMMdd) from year and quarter
+- **Surrogate keys** — index columns added to dimensions
+
+---
+
+## Data Model — Star Schema
+
+![Data Model](images/data_model.png)
+
+| Table | Type | Description |
+|---|---|---|
+| `Sales` | Fact | Order lines with quantity, unit price and revenue |
+| `Customers` | Dimension | Customer name, type, country, region (with region hierarchy) |
+| `Products` | Dimension | Division, product type, segment (with product hierarchy) |
+| `Date` | Dimension | Date, month, quarter, year (with date hierarchy) |
+| `M` | Measures table | All DAX measures |
+
+### Key DAX Measures
+- **Revenue:** Total Revenue, Revenue YTD, Revenue LY, Revenue YoY %
+- **Targets:** Revenue Target, Revenue vs Target % (with a What-If parameter *Target Growth %*)
+- **Orders & customers:** Total Orders, Total Quantity, Total Customers, Top Customer
+- **Averages:** Average Price Per Unit, Average Revenue Per Order, Average Revenue Per Customer, Average Quantity Per Order
+- **Customer mix:** Distributor Revenue %, End-User Revenue %
+
+---
 
 ## Dashboards
-The Power BI dashboard includes:
+The report has four main pages plus two tooltip pages:
 
-- Product performance analysis
-- Time-based sales trends
-- Customer segmentation
-- Revenue by geography
+| Page | What it shows |
+|---|---|
+| ⚫ Time-Based Trends | Revenue and quantity trends over time, KPI cards, year and period slicers |
+| 🔵 Products Performance | Revenue by division, product type and segment, with drill-down |
+| 🟣 Customer Segmentation | End-users vs. distributors, revenue per customer type (funnels, gauges) |
+| 🟠 Revenue by Geography | Revenue by country and region (map, treemap) |
+| Tooltips | Customer profile and summary cards on hover |
+
+---
+
+## Key Business Insights
+1. **Revenue concentration** — most revenue comes from two markets, **India and Italy**, and from **Life Insurance** as the main growth engine. This creates exposure to regulatory or market changes in these countries → diversify revenue sources.
+2. **Growth is driven by pricing, not just volume** — average price per unit improves consistently, especially in 2013, meaning more value is captured from each customer.
+3. **Targets need recalibration** — there is a persistent gap between actual revenue and the Revenue Target, even when targets are met. Targets should be based on current growth trends rather than historical data only.
+
+---
+
+## Challenges
+The main challenge was the initial ETL: combining a SQL database with an external CSV revealed differences in structure, date formats and granularity. Thorough cleaning and alignment were required so that DAX measures such as Revenue YoY and What-If scenarios would be calculated correctly.
+
+---
+
+## Tools Used
+| Tool | Purpose |
+|---|---|
+| SQL Server | Source transactional data |
+| Power Query | ETL and data transformation |
+| Power Pivot (Excel) | Tabular model and initial dashboards |
+| Power BI Desktop | Data model, DAX measures, interactive report |
+| DAX | Time intelligence, KPIs, What-If analysis |
+
+---
 
 ## Files
-- AnalysisProject.pbix – Power BI dashboard
-- PP-AnalysisProject.xlsx – dataset
-- Presentation-AnalysisProjectNew.pptx – project presentation
+| File | Description |
+|---|---|
+| `AnalysisProject.pbix` | Power BI report (open with Power BI Desktop) |
+| `PP-AnalysisProject.xlsx` | Power Pivot model with Excel dashboards (PivotTables & charts) |
+| `Presentation-AnalysisProjectNew.pptx` | Project presentation (in Hebrew) |
+| `images/data_model.png` | Star schema data model |
