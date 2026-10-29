@@ -88,7 +88,7 @@ The report has four main pages plus two tooltip pages:
 1. **Revenue concentration** — **Life Insurance** generates ₪594K, about **64% of total revenue**, and the top markets are **India and Italy**. This creates exposure to regulatory or market changes in these countries → diversify revenue sources.
 2. **Growth is driven by pricing, not just volume** — average price per unit improves consistently, especially in 2013, meaning more value is captured from each customer.
 3. **Distributors drive the business** — distributors generate **74.7%** of revenue vs. 25.3% from end-users, so losing a few large distributors would have an outsized impact.
-4. **Targets need recalibration** — there is a persistent gap between actual revenue and the Revenue Target, even when targets are met. Targets should be based on current growth trends rather than historical data only.
+4. **2013 grew, but missed the growth target** — revenue grew **3.8% YoY** (₪321.7K vs ₪309.8K in 2012), while a +10% growth target (₪340.8K) was missed by **5.6%**. Targets should be based on current growth trends rather than historical data only (the *Target Growth %* What-If parameter lets you test different scenarios).
 
 ---
 
