@@ -2,7 +2,7 @@
 
 End-to-end BI project analyzing sales activity of a fictional insurance company **"Happy Insurance"** — from ETL in Power Query to a star schema data model, DAX measures, and interactive Power BI dashboards.
 
-Team project — Technion Big Data Analyst program (TCBDA-28) · **Valeria Barabanova** · **Lihi Berg**
+Team project — Technion Big Data Analyst program (TCBDA-28) · **Valeria Barabanova** ·
 
 ---
 
