@@ -68,12 +68,27 @@ The report has four main pages plus two tooltip pages:
 | 🟠 Revenue by Geography | Revenue by country and region (map, treemap) |
 | Tooltips | Customer profile and summary cards on hover |
 
+### ⚫ Time-Based Trends
+![Time-Based Trends](images/page1_time_trends.png)
+
+### 🔵 Products Performance
+![Products Performance](images/page2_products.png)
+
+### 🟣 Customer Segmentation
+![Customer Segmentation](images/page3_customers.png)
+
+### 🟠 Revenue by Geography
+![Revenue by Geography](images/page4_geography.png)
+
 ---
 
 ## Key Business Insights
-1. **Revenue concentration** — most revenue comes from two markets, **India and Italy**, and from **Life Insurance** as the main growth engine. This creates exposure to regulatory or market changes in these countries → diversify revenue sources.
+**At a glance:** ₪927K total revenue · 571 orders · 39.2K units · ₪1,624 average revenue per order
+
+1. **Revenue concentration** — **Life Insurance** generates ₪594K, about **64% of total revenue**, and the top markets are **India and Italy**. This creates exposure to regulatory or market changes in these countries → diversify revenue sources.
 2. **Growth is driven by pricing, not just volume** — average price per unit improves consistently, especially in 2013, meaning more value is captured from each customer.
-3. **Targets need recalibration** — there is a persistent gap between actual revenue and the Revenue Target, even when targets are met. Targets should be based on current growth trends rather than historical data only.
+3. **Distributors drive the business** — distributors generate **74.7%** of revenue vs. 25.3% from end-users, so losing a few large distributors would have an outsized impact.
+4. **Targets need recalibration** — there is a persistent gap between actual revenue and the Revenue Target, even when targets are met. Targets should be based on current growth trends rather than historical data only.
 
 ---
 
@@ -100,3 +115,4 @@ The main challenge was the initial ETL: combining a SQL database with an externa
 | `PP-AnalysisProject.xlsx` | Power Pivot model with Excel dashboards (PivotTables & charts) |
 | `Presentation-AnalysisProjectNew.pptx` | Project presentation (in Hebrew) |
 | `images/data_model.png` | Star schema data model |
+| `images/page*.png` | Dashboard screenshots |
